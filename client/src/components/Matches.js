@@ -24,9 +24,14 @@ function Matches({ setClickedUser, newSwipe }) {
     getMatches();
   }, [newSwipe])
 
+  
+  const filteredAccounts = matchedAccounts?.filter((matchedAccount) => 
+    matchedAccount.matches?.filter((account) => account.email == cookies.UserEmail).length > 0
+  )
+
   return (
     <div className="matches-list">
-      {matchedAccounts?.map((match, index) => (
+      {filteredAccounts?.map((match, index) => (
         <div key={index} className="match-card" onClick={() => setClickedUser(match)}>
           <b><p>{match?.name}</p></b>
         </div>
