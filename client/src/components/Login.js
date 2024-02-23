@@ -1,0 +1,66 @@
+import React from 'react'
+import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
+
+function Login({ setShowLogin }) {
+    const [ email, setEmail ] = useState(null);
+    const [ password, setPassword ] = useState(null);
+    const [ cookies, setCookie, removeCookie ] = useCookies('user');
+
+
+    let navigate = useNavigate();
+
+    const cancelClick = () => {
+        setShowLogin(false);
+    }
+
+    const submitForm = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('/login', {email, password});
+            setCookie("AuthToken", response.data.token);
+            setCookie("UserEmail", response.data.userEmail);
+            setCookie("UserID", response.data.userID);
+            const success = response.status === 201;
+            if(success) navigate('/mainpage');
+            window.location.reload();
+        } catch (error) {
+            alert("Wrong email or password");
+        }
+    }
+
+  return (
+    <div>
+      <h2>
+            Log in
+        </h2>
+        <button className=" orange btn-small" onClick={cancelClick}>
+            cancel
+         </button>
+      
+        <form className="accountForm" onSubmit={submitForm}>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="email" 
+                required={true} 
+                onChange={(e) => setEmail(e.target.value)}
+            />
+            <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                placeholder="password" 
+                required={true} 
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit" className="btn">Submit</button>
+        </form>
+    </div>
+  )
+}
+
+export default Login
