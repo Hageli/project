@@ -4,7 +4,7 @@ import Matches from './Matches'
 import ChatContent from './ChatContent'
 import { useState } from 'react'
 
-function Chat({ user }) {
+function Chat({ user, newSwipe }) {
   const [ clickedUser, setClickedUser ] = useState(null);
 
   return (
@@ -14,7 +14,7 @@ function Chat({ user }) {
         <button name="matchbutton" className="btn-small" onClick={() => setClickedUser(null)}>Matches</button>
         <button name="chatbutton" className="btn-small" disabled={!clickedUser}>Chat</button>
       </div>
-      {!clickedUser && <Matches setClickedUser={setClickedUser}/>}
+      {!clickedUser && <Matches setClickedUser={setClickedUser} newSwipe={newSwipe}/>}
       {clickedUser && <ChatContent user={user} clickedUser={clickedUser}/>}
     </div>
   )

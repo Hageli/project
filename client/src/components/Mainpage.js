@@ -9,6 +9,7 @@ function Mainpage() {
     const [ user, setUser ] = useState('');
     const [ cookies, setCookie, removeCookie ] = useCookies(['user']);
     const [ characters, setCharacter ] = useState([]);
+    const [ newSwipe, setNewSwipe] = useState();
     
     const getUser = async () => {
       try {
@@ -53,6 +54,7 @@ function Mainpage() {
     }, [])
 
     const swiped = (direction, swipedEmail) => {
+      setNewSwipe(swipedEmail);
       if(direction === 'right') {
         setMatched(swipedEmail);
       }
@@ -64,7 +66,7 @@ function Mainpage() {
 
   return (
     <div className="mainpage">
-        <Chat user={(user)}/>
+        <Chat user={(user)} newSwipe={newSwipe}/>
         <div className="main-container">
             <div className='cardContainer'>
             {characters.map((character) =>

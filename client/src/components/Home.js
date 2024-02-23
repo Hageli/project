@@ -4,7 +4,6 @@ import AddNewAccount from './AddNewAccount';
 import Login from './Login';
 
 function Home() {
-    const authToken = false;
     const [ showNewAccount, setShowNewAccount] = useState(false)
     const [ showLogin, setShowLogin ] = useState(false);
 
@@ -23,14 +22,14 @@ function Home() {
         )}
 
         <div className="buttonDiv">
-            {!showNewAccount && !authToken && !showLogin && (
+            {!showNewAccount && !showLogin && (
                 <button className="btn-large" onClick={signInClick}>Log in </button>
             )}
         </div>
         <div className="buttonDiv">
             {!showNewAccount && !showLogin && (
                 <button className="btn-large" onClick={createAccountClick}>
-                    {authToken ? 'Log out': 'Create account'}
+                    Create account
                 </button>
             )}
         </div>

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useCookies } from 'react-cookie'
 
-function Matches({ setClickedUser }) {
+function Matches({ setClickedUser, newSwipe }) {
   const [ matchedAccounts, setMatchedAccounts ] = useState()
   const [ cookies, setCookie, removeCookie] = useCookies(['user'])
 
@@ -22,7 +22,7 @@ function Matches({ setClickedUser }) {
 
   useEffect(() => {
     getMatches();
-  }, [])
+  }, [newSwipe])
 
   return (
     <div className="matches-list">
