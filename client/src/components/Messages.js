@@ -1,5 +1,6 @@
 import React from 'react'
 
+// THIS CONTAINS THE MESSAGES DISPLAY. ALL MESSAGES ARE SHOWN IN SIMPLE MESSAGE CARDS THAT INCLUDE THE SENDER NAME AS HEADER
 function Messages({ orderedMessages }) {
   return (
     <>

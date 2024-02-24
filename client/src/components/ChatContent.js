@@ -5,13 +5,14 @@ import { useState } from 'react';
 import axios from 'axios'
 import { useEffect } from 'react';
 
+// THIS CONTAINS THE MESSAGE HISTORY AND CHAT INPUT FIELD/SUBMIT BUTTON. 
 function ChatContent({user, clickedUser}) {
   const s_email = user?.email;
   const r_email = clickedUser?.email;
   const [ messages, setMessages ] = useState();
   const [ matchMessages, setMatchMessages ] = useState();
 
-
+  // GETS ALL MESSAGES SENT BY LOGGED IN USER TO SELECTED MATCH
   const getMessages = async () => {
     try {
       const response = await axios.get('/getmessages', {
@@ -23,7 +24,7 @@ function ChatContent({user, clickedUser}) {
     }    
   }
 
-  
+  // GETS ALL MESSAGES SET BY SELECTED MATCH TO LOGGED IN USER
   const getMatchMessages = async () => {
     try {
       const response = await axios.get('/getmessages', {
@@ -40,6 +41,7 @@ function ChatContent({user, clickedUser}) {
     getMatchMessages();
   }, [])
 
+  // FORMATTING THE MESSAGES TO INCLUDE THE SENDER NAME INSTEAD OF EMAIL AND SORTING THEM IN CHRONOLOGICAL ORDER
   const tempMessages = [];
 
   messages?.forEach(message => {

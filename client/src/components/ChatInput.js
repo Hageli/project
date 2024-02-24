@@ -2,11 +2,13 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 
+// CONTAINS THE TEXT INPUT AND SUBMIT BUTTON FOR CHAT MESSAGES
 function ChatInput({ user, clickedUser, getMessages, getMatchMessages }) {
     const [ textArea, setTextArea ] = useState("")
     const tempUserEmail = user?.email;
     const tempClickedEmail = clickedUser?.email;
 
+    // SENDS A NEW TIMESTAMPED MESSAGE AND RELOADS THE MESSAGE HISTORY
     const addMessage = async () => {
         const newMessage = {
             time: new Date().toISOString(),

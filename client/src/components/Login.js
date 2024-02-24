@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 
+// THIS THE LOGIN FORM. WHEN USER IS SUCCESSFULLY LOGGED IN, SETS THE COOKIES
 function Login({ setShowLogin }) {
     const [ email, setEmail ] = useState(null);
     const [ password, setPassword ] = useState(null);
@@ -12,10 +13,12 @@ function Login({ setShowLogin }) {
 
     let navigate = useNavigate();
 
+    // HIDE LOGIN FORM WHEN USERS CANCELS
     const cancelClick = () => {
         setShowLogin(false);
     }
 
+    // SUBMIT LOGIN FORM AND SET COOKIES
     const submitForm = async (e) => {
         e.preventDefault();
         try {

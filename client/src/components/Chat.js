@@ -4,6 +4,7 @@ import Matches from './Matches'
 import ChatContent from './ChatContent'
 import { useState } from 'react'
 
+// CONTAINS THE MATCHES LISTING/CHAT HISTORY AND REQUIRED BUTTONS TO SWITCH BETWEEN THE TWO. CHAT BUTTON IS DISABLED IF MATCH IS NOT SELECTED
 function Chat({ user, newSwipe }) {
   const [ clickedUser, setClickedUser ] = useState(null);
 

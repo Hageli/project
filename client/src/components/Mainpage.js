@@ -5,12 +5,14 @@ import Chat from './Chat'
 import axios from 'axios'
 import { useCookies } from 'react-cookie'
 
+// THIS IS THE MAINPAGE. CONTAINS THE TINDER CARDS AND CHAT/MATCH LISTING
 function Mainpage() {
     const [ user, setUser ] = useState('');
     const [ cookies, setCookie, removeCookie ] = useCookies(['user']);
     const [ characters, setCharacter ] = useState([]);
     const [ newSwipe, setNewSwipe] = useState();
     
+    // GETS THE CURRENT LOGGED IN USER
     const getUser = async () => {
       try {
         const userEmail = cookies.UserEmail;
@@ -23,6 +25,7 @@ function Mainpage() {
       } 
     }
 
+    // GETS ALL USERS, EXCLUDING LOGGED IN ONE, FOR THE TINDERCARDS
     const getAllUsers = async () => {
       try {
         const response = await axios.get('/allusers', {
@@ -34,6 +37,7 @@ function Mainpage() {
       }
     }
 
+    // ADDS A LIKE TO THE SWIPED USER
     const setMatched = async (swipedEmail) => {
       const currentEmail = cookies.UserEmail;
       try {
@@ -53,6 +57,7 @@ function Mainpage() {
       getAllUsers();
     }, [])
 
+    // IF THE DIRECTION OF SWIPE IS RIGHT, CALLS A FUNCTION TO ADD LIKE. PARTIALLY FROM REACT-TINDER-CARD
     const swiped = (direction, swipedEmail) => {
       setNewSwipe(swipedEmail);
       if(direction === 'right') {
@@ -60,6 +65,7 @@ function Mainpage() {
       }
     }
   
+    // FUNCTION TO NOTIFY WHEN CARDS HAS LEFT SCREEN. FROM REACT-TINDER-CARD
     const outOfFrame = (name) => {
       console.log(name + ' left the screen!')
     }

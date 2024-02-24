@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
 
-
+// THIS CONTAINS THE FORM FOR CREATING A NEW ACCOUNT
 function AddNewAccount({ setShowNewAccount }) {
     const [ email, setEmail ] = useState(null);
     const [ password, setPassword ] = useState(null);
@@ -15,10 +15,11 @@ function AddNewAccount({ setShowNewAccount }) {
 
     let navigate = useNavigate()
 
+    // HIDE ACCOUNT CREATION FORM WHEN USERS CANCELS
     const cancelClick = () => {
         setShowNewAccount(false);
     }
-
+    // SUBMIT ACCOUNT CREATION FORM AND SET COOKIES
     const submitForm = async (e) => {
         e.preventDefault();
         try {
