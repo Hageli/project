@@ -37,7 +37,6 @@ function ManageProfile() {
       <form className="manageForm">
       <div className="edit-input">
         <input 
-          className="edit-input"
           type="text" 
           placeholder="Name" 
           onChange={(e) => setName(e.target.value)}
@@ -45,7 +44,6 @@ function ManageProfile() {
         </div>
         <div className="edit-input">
           <input 
-            className="edit-input"
             type="text" 
             pattern="[0-9]*"
             placeholder="Age" 

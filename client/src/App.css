@@ -130,14 +130,21 @@ body {
     padding: 10px;
 }
 
-.edit-input {
+.edit-input,
+.login-input,
+.create-input {
     box-shadow: 0px 0px 3px 0px;
     background-color: #fff;
     margin: 5px;
     margin-bottom: 10px;
+    margin-top: 10px;
     padding-left: 5px;
 }
 
-.edit-div {
+.edit-div,
+.login-div,
+.create-div {
     background-color: #e3e6e5;
+    padding: 10px;
 }
+

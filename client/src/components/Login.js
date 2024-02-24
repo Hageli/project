@@ -39,29 +39,35 @@ function Login({ setShowLogin }) {
       <h2>
             Log in
         </h2>
-        <button className=" orange btn-small" onClick={cancelClick}>
-            cancel
-         </button>
-      
-        <form className="accountForm" onSubmit={submitForm}>
-            <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                placeholder="email" 
-                required={true} 
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input 
-                type="password" 
-                id="password" 
-                name="password" 
-                placeholder="password" 
-                required={true} 
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit" className="btn">Submit</button>
-        </form>
+        <div className="login-div">
+            <button className=" orange btn-small" onClick={cancelClick}>
+                cancel
+            </button>
+            <form className="accountForm" onSubmit={submitForm}>
+                <div className="login-input">
+                    <input
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="email" 
+                        required={true} 
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+                <div className="login-input">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="password" 
+                        required={true} 
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <button type="submit" className="btn">Submit</button>
+            </form>
+        </div>
+
     </div>
   )
 }
